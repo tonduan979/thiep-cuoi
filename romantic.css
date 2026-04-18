@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Thiệp cưới Premium</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: linear-gradient(135deg,#ffd6e0,#c2e9fb);
+  text-align: center;
+}
+
+/* ===== FLIP CARD ===== */
+.scene {
+  width: 320px;
+  height: 200px;
+  margin: 50px auto;
+  perspective: 1000px;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: 0.8s;
+}
+
+.scene:hover .card {
+  transform: rotateY(180deg);
+}
+
+.face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+/* ===== TIMELINE ===== */
+.timeline {
+  max-width: 500px;
+  margin: 40px auto;
+  text-align: left;
+}
+
+.item {
+  padding: 10px;
+  border-left: 3px solid #ff4d6d;
+  margin: 10px;
+}
+
+/* ===== MAP ===== */
+.map {
+  margin: 40px auto;
+}
+
+/* ===== MUSIC BUTTON ===== */
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background: #ff4d6d;
+  color: white;
+  cursor: pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>💒 Thiệp cưới Premium</h1>
+
+<!-- 🎵 MUSIC -->
+<button onclick="playMusic()">▶ Phát nhạc</button>
+
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8b8.mp3?filename=romantic-piano-ambient-110397.mp3">
+</audio>
+
+<!-- 💌 FLIP CARD -->
+<div class="scene">
+  <div class="card">
+    <div class="face front">
+      💌 Mở thiệp
+    </div>
+    <div class="face back">
+      Thái Bảo ❤ Thanh Nhàn
+    </div>
+  </div>
+</div>
+
+<!-- 📖 TIMELINE -->
+<div class="timeline">
+  <h2>📖 Câu chuyện tình yêu</h2>
+
+  <div class="item">💬 2023 - Gặp nhau lần đầu</div>
+  <div class="item">💖 2024 - Bắt đầu hẹn hò</div>
+  <div class="item">💍 2026 - Kết hôn</div>
+</div>
+
+<!-- 📍 MAP -->
+<div class="map">
+  <h2>📍 Địa điểm cưới</h2>
+
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18..."
+    width="300"
+    height="200"
+    style="border:0;"
+    loading="lazy">
+  </iframe>
+</div>
+
+<script>
+
+/* ===== MUSIC AUTO ===== */
+function playMusic() {
+  document.getElementById("music").play();
+}
+
+/* auto play attempt */
+window.onload = () => {
+  document.getElementById("music").play().catch(()=>{});
+};
+
+</script>
+
+</body>
+</html>
