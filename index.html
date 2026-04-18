@@ -1,24 +1,201 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>Thiệp cưới</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Thiệp cưới đa phong cách</title>
+
+<style>
+/* ===== RESET ===== */
+body {
+  margin: 0;
+  font-family: sans-serif;
+  text-align: center;
+  transition: 0.5s;
+}
+
+/* ===== BACKGROUND STYLE ===== */
+body.romantic {
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+}
+
+body.luxury {
+  background: black;
+  color: gold;
+}
+
+body.minimal {
+  background: #f5f5f5;
+  color: #333;
+}
+
+body.fun {
+  background: linear-gradient(45deg, #a1c4fd, #c2e9fb);
+}
+
+/* ===== CARD ===== */
+.card {
+  width: 320px;
+  margin: 40px auto;
+  padding: 25px;
+  border-radius: 20px;
+  display: none;
+  animation: fadeInUp 1s ease;
+}
+
+/* style riêng */
+.romantic .card {
+  background: rgba(255,255,255,0.8);
+}
+
+.luxury .card {
+  background: rgba(0,0,0,0.7);
+  border: 1px solid gold;
+}
+
+.minimal .card {
+  background: white;
+}
+
+.fun .card {
+  background: #fff;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== HEART ===== */
+.heart {
+  color: red;
+  animation: beat 1s infinite;
+}
+
+@keyframes beat {
+  50% { transform: scale(1.3); }
+}
+
+/* ===== INPUT ===== */
+input, button {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+  border: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* ===== FLOWER / CONFETTI ===== */
+.flower {
+  position: fixed;
+  top: -10px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(360deg); }
+}
+
+/* ===== GLOW TEXT ===== */
+.names {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.luxury .names {
+  text-shadow: 0 0 10px gold;
+}
+
+/* ===== COUNTDOWN ===== */
+.countdown {
+  margin-top: 10px;
+  font-size: 18px;
+}
+</style>
+
 </head>
-<body>
 
-<h2>Thiệp cưới 💍</h2>
+<body class="romantic">
 
-<input id="name1" placeholder="Tên chú rể">
-<input id="name2" placeholder="Tên cô dâu">
-<input id="date" placeholder="Ngày cưới">
+<h2>💒 Thiệp cưới online</h2>
 
-<div class="card">
-  <h3 id="names">A ❤️ B</h3>
-  <p id="dateText">Ngày...</p>
+<!-- đổi style -->
+<select onchange="changeStyle(this.value)">
+  <option value="romantic">Lãng mạn</option>
+  <option value="luxury">Sang trọng</option>
+  <option value="minimal">Tối giản</option>
+  <option value="fun">Vui tươi</option>
+</select>
+
+<br><br>
+
+<input id="groom" placeholder="Tên chú rể">
+<input id="bride" placeholder="Tên cô dâu">
+<input id="date" placeholder="YYYY-MM-DD">
+
+<br>
+<button onclick="generateCard()">Tạo thiệp</button>
+
+<div class="card" id="card">
+  <div class="names" id="names"></div>
+  <p id="weddingDate"></p>
+  <div class="countdown" id="countdown"></div>
 </div>
 
-<script src="script.js"></script>
+<script>
+// ===== TẠO THIỆP =====
+function generateCard() {
+  let groom = document.getElementById("groom").value;
+  let bride = document.getElementById("bride").value;
+  let date = document.getElementById("date").value;
+
+  document.getElementById("names").innerHTML =
+    groom + ' <span class="heart">❤</span> ' + bride;
+
+  document.getElementById("weddingDate").innerText =
+    "Ngày cưới: " + date;
+
+  document.getElementById("card").style.display = "block";
+
+  startCountdown(date);
+}
+
+// ===== ĐỔI STYLE =====
+function changeStyle(style) {
+  document.body.className = style;
+}
+
+// ===== HOA RƠI =====
+for (let i = 0; i < 20; i++) {
+  let f = document.createElement("div");
+  f.className = "flower";
+  f.innerHTML = Math.random() > 0.5 ? "🌸" : "🎉";
+
+  f.style.left = Math.random() * 100 + "vw";
+  f.style.animationDuration = (3 + Math.random()*5) + "s";
+
+  document.body.appendChild(f);
+}
+
+// ===== COUNTDOWN =====
+function startCountdown(date) {
+  let target = new Date(date);
+
+  setInterval(() => {
+    let now = new Date();
+    let diff = target - now;
+
+    if (diff <= 0) return;
+
+    let days = Math.floor(diff / (1000*60*60*24));
+    document.getElementById("countdown").innerText =
+      "Còn " + days + " ngày 💖";
+  }, 1000);
+}
+</script>
 
 </body>
 </html>
