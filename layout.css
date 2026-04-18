@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  font-family: Arial;
+  text-align: center;
+
+  /* nền gradient hồng */
+  background: linear-gradient(to bottom, #f8caca, #e9a9a9);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  top: 80px;
+}
+
+input, select {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  border: none;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  background: white;
+  cursor: pointer;
+}
