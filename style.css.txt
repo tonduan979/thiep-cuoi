@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  text-align: center;
+  background: #fff;
+}
+
+section {
+  padding: 60px 20px;
+}
+
+.hero {
+  height: 100vh;
+  background: linear-gradient(to bottom, #fce4ec, #fff);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 50px;
+  color: #c2185b;
+}
+
+.gallery img {
+  width: 200px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.1);
+}
+
+.countdown {
+  background: #f8f8f8;
+}

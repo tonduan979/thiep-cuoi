@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Thiệp cưới</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Trang mở -->
+<section class="hero">
+  <h1 contenteditable="true">Đức Huy & Thùy Chi</h1>
+  <p contenteditable="true">10.05.2026</p>
+</section>
+
+<!-- Story -->
+<section class="story">
+  <h2 contenteditable="true">Câu chuyện tình yêu</h2>
+  <p contenteditable="true">
+    Chúng mình gặp nhau, yêu nhau và quyết định đi cùng nhau đến cuối đời...
+  </p>
+</section>
+
+<!-- Ảnh -->
+<section class="gallery">
+  <img src="https://picsum.photos/400/500" onclick="changeImage(this)">
+  <img src="https://picsum.photos/401/500" onclick="changeImage(this)">
+</section>
+
+<!-- Đếm ngược -->
+<section class="countdown">
+  <h2>Đếm ngược ngày cưới</h2>
+  <p id="timer"></p>
+</section>
+
+<!-- Nhạc -->
+<audio controls autoplay loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+</audio>
+
+<script src="script.js"></script>
+</body>
+</html>
